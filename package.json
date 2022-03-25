@@ -1,0 +1,8 @@
+{
+  "name": "video-app-native-desktop",
+  "version": "1.0.0",
+  "description": "native desktop video loading app from undemy training",
+  "main": "index.js",
+  "author": "Sahil kashetwar",
+  "license": "MIT"
+}
