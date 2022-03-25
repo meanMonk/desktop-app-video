@@ -1,5 +1,5 @@
 {
-  "name": "video-app-native-desktop",
+  "name": "video-app",
   "version": "1.0.0",
   "description": "native desktop video loading app from undemy training",
   "main": "index.js",
