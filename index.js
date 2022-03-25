@@ -1,5 +1,5 @@
-const { app } = require('electron');
+const { app, BrowserWindow } = require('electron');
 
 app.on('ready', () => {
-  console.log(`Let's do surfing (🏄‍♂️) into the electrons world!`);
+  new BrowserWindow({})
 })
