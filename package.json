@@ -4,5 +4,12 @@
   "description": "native desktop video loading app from undemy training",
   "main": "index.js",
   "author": "Sahil kashetwar",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^17.2.0"
+  }
 }
