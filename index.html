@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video app</title>
 </head>
+
 <body>
   <h1>Video File Explorer</h1>
   <div class="container">
-    <form >
+    <form>
       <div>
         <label for="file">Select Video file</label>
         <input type="file" name="file" id="file" accept="video/*">
       </div>
       <button type="submit">Get file Info</button>
     </form>
+    <h1 id="result"></h1>
   </div>
   <script>
-    document.querySelector('form').addEventListener("submit", (event)=>{
+
+    const electron = require('electron');
+
+    const { ipcRenderer } = electron;
+    // inter process controller to send info back and forth to electron from browser.
+
+    document.querySelector('form').addEventListener("submit", (event) => {
       event.preventDefault();
-      const file = document.querySelector('input').files[0];
-      console.log(file);
-      // install ffmpeg with brew to acces video deatils
+      const {path} = document.querySelector('input').files[ 0 ];
+      // send the data from browser to electron app.
+      ipcRenderer.send('video:submit', path);
+    })
+    
+    ipcRenderer.on('video:duration', (event, duration)=>{
+      console.log('Duration of selected window is', duration);
+      document.getElementById('result').innerHTML = `Video duration is ${duration} s`
     })
   </script>
 </body>
+
 </html>
