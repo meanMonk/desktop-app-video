@@ -8,7 +8,9 @@
   "scripts": {
     "start": "electron ."
   },
-  "dependencies": {},
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2"
+  },
   "devDependencies": {
     "electron": "^17.2.0"
   }
