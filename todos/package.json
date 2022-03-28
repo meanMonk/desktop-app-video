@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "sahil",
   "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
   "dependencies": {
     "electron": "^17.2.0"
   }
