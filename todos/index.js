@@ -16,7 +16,7 @@ app.on('ready', () => {
   });
 
   mainWindow.loadURL(`file://${__dirname}/main.html`);
-
+  mainWindow.on('closed', () => app.quit());
   // setup menu;
   const mainMenu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(mainMenu);
@@ -29,6 +29,8 @@ function createAddWindow() {
     height: 200,
     title: 'Add new todo'
   });
+  
+  addWindow.loadURL(`file://${__dirname}/add.html`);
 }
 
 let menuTemplate = [
@@ -49,7 +51,7 @@ let menuTemplate = [
           } else {
             return 'Ctrl+!'
           }
-        }),
+        })(),
         click() {
           app.quit();
         }
