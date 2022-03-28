@@ -1,7 +1,7 @@
 const { Menu } = require('electron');
 const electron = require('electron');
 
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow , ipcMain} = electron;
 
 
 let mainWindow;
@@ -29,11 +29,24 @@ function createAddWindow() {
   addWindow = new BrowserWindow({
     width: 300,
     height: 200,
-    title: 'Add new todo'
+    title: 'Add new todo',
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    }
   });
 
   addWindow.loadURL(`file://${__dirname}/add.html`);
+  // close the add window on operation completed;
+  // to avoid the creating multiple instance of add window just clear the garbage.
+  addWindow.on('closed', () => addWindow = null);
 }
+
+ipcMain.on('todo:add', (event, todo) => {
+  console.log('todo:add', todo);
+  mainWindow.webContents.send('todo:add', todo);
+  addWindow.close()
+})
 
 let menuTemplate = [
   {
