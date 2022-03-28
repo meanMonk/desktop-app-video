@@ -16,6 +16,12 @@
     </div>
     <button type="submit">Add</button>
   </form>
+  <script>
+    document.querySelector('form').addEventListener('submit', (event)=>{
+      event.preventDefault();
+      console.log(event);
+      console.log();
+    })
+  </script>
 </body>
-
 </html>
