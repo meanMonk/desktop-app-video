@@ -1,7 +1,7 @@
 {
-  "name": "video-app",
+  "name": "todos",
   "version": "1.0.0",
-  "description": "native desktop video loading app from undemy training",
+  "description": "todos",
   "main": "index.js",
   "author": "Sahil kashetwar",
   "license": "MIT",
@@ -13,5 +13,6 @@
   },
   "devDependencies": {
     "electron": "^17.2.0"
-  }
+  },
+  "repository": "git@github.com:meanMonk/desktop-app-video.git"
 }
