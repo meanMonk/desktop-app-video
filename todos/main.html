@@ -15,13 +15,17 @@
 <script>
   const electron = require('electron');
   const {ipcRenderer} = electron;
-  
+  const list = document.querySelector('ul');
   ipcRenderer.on('todo:add', (event, todo)=>{
-      const ulEl = document.querySelector('ul');
+      
       const liEl = document.createElement('li');
       const text = document.createTextNode(todo);
       liEl.appendChild(text);
-      ulEl.appendChild(liEl);
+      list.appendChild(liEl);
+  })
+  
+  ipcRenderer.on('todo:clear',(event)=>{
+    list.innerHTML ='';
   })
   
 </script>

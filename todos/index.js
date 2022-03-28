@@ -48,6 +48,7 @@ ipcMain.on('todo:add', (event, todo) => {
   addWindow.close()
 })
 
+
 let menuTemplate = [
   {
     label: 'File',
@@ -56,6 +57,12 @@ let menuTemplate = [
         label: 'New Todo',
         click() {
           createAddWindow()
+        }
+      },
+      {
+        label: 'Clear Todo',
+        click() {
+          mainWindow.webContents.send('todo:clear');
         }
       },
       {
@@ -91,6 +98,7 @@ if (process.env.NODE_ENV !== 'production') {
     {
       label: 'View',
       submenu: [
+        {role: 'reload'}, // electron have many role options
         {
           label: 'Developer tools',
           accelerator: process.platform === 'darwin' ? 'Command+Alt+I' : 'Ctrl+Shift+I',
